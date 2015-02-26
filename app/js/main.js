@@ -8,6 +8,7 @@
             underscore: '../../vendor/underscore/underscore',
             backbone: '../../vendor/backbone/backbone',
             text:     '../../vendor/requirejs-text/text',
+            localstorage: '../../vendor/backbone.localStorage/backbone.localStorage',
 
             /* Client-side Templates (Handlebars) */
             templates: '../templates'
@@ -19,6 +20,10 @@
             'backbone': {
                 deps: ['underscore', 'jquery'],
                 exports: 'Backbone'
+            },
+            localstorage: {
+                deps: ['backbone'],
+                exports: 'localstorage'
             }
         }
     });

@@ -11,6 +11,11 @@
         var ContactsView = Backbone.View.extend({
           template: _.template(contactsTpl),
 
+          initialize: function(){
+              this.listenTo( this.collection, 'add', this.render );
+              this.listenTo( this.collection, 'reset', this.render );
+              this.collection.fetch();
+          },
           renderOne: function(contact) {
             var itemView = new ContactView({model: contact});
             this.$('.contacts-container').append(itemView.render().$el);

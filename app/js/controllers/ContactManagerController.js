@@ -13,10 +13,9 @@
         function (Backbone,_,$,Router,ContactsCollection,ContactFormView,ContactsView,Contact) {
             var ContactManager = {
 
-                start: function (data) {
-                    var contacts = new ContactsCollection(data.contacts),
+                start: function () {
+                    var contacts = new ContactsCollection(),
                         router = new Router();
-
                     router.on('route:home', function () {
                         router.navigate('contacts', {
                             trigger: true,
@@ -39,7 +38,9 @@
 
                         newContactForm.on('form:submitted', function (attrs) {
                             attrs.id = contacts.isEmpty() ? 1 : (_.max(contacts.pluck('id')) + 1);
-                            contacts.add(attrs);
+                            var newContact = new Contact(attrs);
+                            contacts.add(newContact);
+                            newContact.save();
                             router.navigate('contacts', true);
                         });
 
