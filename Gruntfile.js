@@ -48,11 +48,20 @@ module.exports = function(grunt) {
                 options: {
                 }
             }
+        },
+
+        jshint: {
+            main: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                src: ['app/js/*']
+            }
         }
     });
 
     grunt.registerTask( 'serverStart', ['http-server:dev']);
 
-    grunt.registerTask( 'build', [ 'less:production'] );
+    grunt.registerTask( 'build', [ 'less:production','jshint'] );
 };
 
