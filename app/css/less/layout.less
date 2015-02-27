@@ -17,35 +17,37 @@
   }
 }
 
-.media-object {
-  width: 128px;
-  height: 128px;
-  border-radius: 5px;
-}
-
-.media{
-  .thumbnail {
-    display: inline-block;
-    margin-bottom: 0;
-    @media @not-mobile {
-      float: left;
-      margin-right: 25px;
-    }
-  }
-  h3{
-    margin-top: 0;
-  }
-}
-
 .media-list {
   text-align: center;
+  .media{
+    &:first-child {
+      margin-top: 15px;
+    }
+    .thumbnail {
+      display: inline-block;
+      margin-bottom: 0;
+      @media @not-mobile {
+        float: left;
+        margin-right: 25px;
+      }
+    }
+    h3{
+      margin-top: 0;
+    }
+    .media-body{
+      dd{
+        word-wrap: break-word;
+      }
+    }
+    .media-object {
+      width: 128px;
+      height: 128px;
+      border-radius: 5px;
+    }
+  }
   @media @not-mobile {
     text-align: left;
   }
-}
-
-.media:first-child {
-  margin-top: 15px;
 }
 
 .btn-outline {
