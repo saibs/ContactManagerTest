@@ -1,1 +1,1 @@
-web: grunt serverStart
+web: grunt serverStart:prod

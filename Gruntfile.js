@@ -21,6 +21,14 @@ module.exports = function(grunt) {
                 showDir : true,
                 autoIndex: true,
                 ext: "html"
+            },
+            'prod': {
+                root: "./build",
+                port: 8282,
+                host: "0.0.0.0",
+                showDir : false,
+                autoIndex: true,
+                ext: "html"
             }
         },
 
@@ -89,7 +97,9 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask( 'serverStart', ['http-server:dev']);
+    grunt.registerTask( 'serverStart:dev', ['http-server:dev']);
+
+    grunt.registerTask( 'serverStart:prod', ['http-server:prod']);
 
     grunt.registerTask( 'build', ['less:production','jshint'] );
 
