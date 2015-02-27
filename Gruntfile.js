@@ -94,5 +94,7 @@ module.exports = function(grunt) {
     grunt.registerTask( 'build', ['less:production','jshint'] );
 
     grunt.registerTask( 'build:prod', ['build','clean:build','requirejs','copy:main'] );
+
+    grunt.registerTask('heroku', ['build:prod']);
 };
 
