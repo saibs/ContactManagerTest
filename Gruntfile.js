@@ -4,6 +4,8 @@ var pkg = require('./package.json');
 
 module.exports = function(grunt) {
 
+    var buildFolder = "build/",
+        buildAppFolder = "build/app/";
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
@@ -57,11 +59,40 @@ module.exports = function(grunt) {
                 },
                 src: ['app/js/*']
             }
+        },
+
+        requirejs: {
+            compile: {
+                options: {
+                    baseUrl: 'app/js',
+                    name: 'main',
+                    mainConfigFile: 'app/js/main.js',
+                    optimize: 'uglify2',
+                    out: buildAppFolder + '/js/main.js'
+                }
+            }
+        },
+
+        clean:{
+            build: ['build']
+        },
+        copy: {
+            main: {
+                files: [
+                    {src: ['index.html'], dest: buildFolder},
+                    {src: ['app/img/**'], dest: buildFolder, filter:'isFile',expand:true},
+                    {src: ['app/css/main.css'], dest: buildFolder, filter:'isFile',expand:true},
+                    {src: ['vendor/requirejs/require.js'], dest: buildFolder, filter:'isFile',expand:true},
+                    {src: ['vendor/bootstrap/fonts/**'], dest: buildFolder, filter:'isFile',expand:true}
+                ]
+            }
         }
     });
 
     grunt.registerTask( 'serverStart', ['http-server:dev']);
 
-    grunt.registerTask( 'build', [ 'less:production','jshint'] );
+    grunt.registerTask( 'build', ['less:production','jshint'] );
+
+    grunt.registerTask( 'build:prod', ['build','clean:build','requirejs','copy:main'] );
 };
 

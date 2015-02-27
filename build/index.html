@@ -1,35 +1,27 @@
-<!doctype html>
-<html class="no-js">
-
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible"
-          content="IE=edge">
-    <title>Backbone+React+Requre Example</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-          type="text/css"
-          href="main.css">
-</head>
-
-<body>
-
-<div class="container">
-    <div class="row"
-         id="header"></div>
-
-    <div class="row contact-container">
-        <div id="contact-list"
-             class="col-md-3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Manager</title>
+    <link href="app/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="bs-header">
+      <div class="container">
+        <h1>Contact Manager</h1>
+        <p>Simple Backbone.js example application</p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 main-container">
         </div>
-
-        <div id="contact-detail"
-             class="col-md-9">
-        </div>
+      </div>
     </div>
-</div>
 
-<script src="app.js"></script>
-</body>
+    <script data-main="app/js/main" src="vendor/requirejs/require.js"></script>
+
+  </body>
 </html>
