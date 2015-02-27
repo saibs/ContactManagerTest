@@ -58,6 +58,7 @@
 
                             editContactForm.on('form:submitted', function (attrs) {
                                 contact.set(attrs);
+                                contact.save();
                                 router.navigate('contacts', true);
                             });
 
